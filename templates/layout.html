@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<style>
+p {
+ text-align:center
+}
+</style>
+<body>
+<center>
+    <h1>Todo List</h1></center>
+<form action="{{ url_for('add') }}" method="POST">
+    <div>
+
+        <label>Enter a Task: </label>
+        <input type="text" name="ip">
+        <input type="submit" value="Add">
+    </div>
+</form>
+
+<div>
+<h2>Incomplete Tasks</h2>
+            <ul><p>
+
+            {% for todo in incomplete %}
+            <li style="font-size: 12pt">{{todo[1]}} <a href="{{url_for('complete', id=todo[0])}}"> Completed </a> <a href="{{url_for('dele', id=todo[0])}}"> Delete</a></li>
+            {% endfor %}
+            </ul></p>
+<h2>Completed Tasks</h2>
+            <ul>
+            {% for todo in complete %}
+            <li style="font-size: 15pt">{{todo[1]}}</li>
+
+            {% endfor %} </ul>
+</div>
+</body>
+</html>
